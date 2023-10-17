@@ -94,8 +94,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			directX->Update();
 			mesh->Update(directX);
 			sprite->Update(winapp);
-			sphere->Update(winapp, *camera->transformationMatrixData);
 			camera->Update(winapp);
+			sphere->Update(*camera->transformationMatrixData);
 
 			for (int i = 0; i < 2; i++) {
 				triangle[i]->Update(*camera->transformationMatrixData);

@@ -6,13 +6,14 @@ void Sphere::Initialize(DirectXCommon* dir_, Mesh* mesh_){
 	Sphere::CreateVertexResourceSphere(dir_, mesh_);
 	Sphere::CreateTransformationMatrixResourceSphere(dir_, mesh_);
 
-	transformSphere = { {1.0f,1.0f,1.0f},{0.0f,0.0f,0.0f},{0.0f,0.0f,0.0f} };
+	transformSphere = { {0.5f,0.5f,0.5f},{0.0f,0.0f,0.0f},{1.0f,0.0f,0.0f} };
 }
 
-void Sphere::Update(WinApp* winapp_, const Matrix4x4& transformationMatrixData){
-	/*Matrix4x4 worldMatrixSphere = MakeAffineMatrix(transformSphere.scale, transformSphere.rotate, transformSphere.translate);
+void Sphere::Update(const Matrix4x4& transformationMatrixData){
+	transformSphere.rotate.y += 0.01f;
+	worldMatrixSphere = MakeAffineMatrix(transformSphere.scale, transformSphere.rotate, transformSphere.translate);
 	worldMatrixSphere = Multiply(worldMatrixSphere, transformationMatrixData);
-	*transformationMatrixDataSphere = worldMatrixSphere;*/
+	*transformationMatrixDataSphere = worldMatrixSphere;
 }
 
 void Sphere::Draw(DirectXCommon* dir_, Mesh* mesh_){
@@ -75,7 +76,7 @@ void Sphere::CreateVertexResourceSphere(DirectXCommon* dir_, Mesh* mesh_){
 			vertexDataSphere[start + 2].position.y = sin(lat);
 			vertexDataSphere[start + 2].position.z = cos(lat) * sin(lon + kLonEvery);
 			vertexDataSphere[start + 2].position.w = 1.0f;
-			vertexDataSphere[start + 2].texcoord = { u + (1.0f / kSubdivision),v - (1.0f / kSubdivision) };
+			vertexDataSphere[start + 2].texcoord = { u + (1.0f / kSubdivision),v + (1.0f / kSubdivision) };
 
 
 			// 基準点b
@@ -101,7 +102,7 @@ void Sphere::CreateVertexResourceSphere(DirectXCommon* dir_, Mesh* mesh_){
 }
 
 void Sphere::CreateTransformationMatrixResourceSphere(DirectXCommon* dir_, Mesh* mesh_){
-	// Sprite用のTransformationMatrix用のリソースを作る。Matrix4x4 1つ分のサイズを用意する
+	// Matrix4x4 1つ分のサイズを用意する
 	transformationMatrixResourceSphere = mesh_->CreateBufferResource(dir_->GetDevice(), sizeof(Matrix4x4));
 
 	// 書き込むためのアドレスを取得

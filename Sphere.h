@@ -16,7 +16,7 @@ class Sphere {
 public:
 	void Initialize(DirectXCommon* dir_, Mesh* mesh_);
 
-	void Update(WinApp* winapp_, const Matrix4x4& transformationMatrixData);
+	void Update(const Matrix4x4& transformationMatrixData);
 
 	void Draw(DirectXCommon* dir_, Mesh* mesh_);
 
@@ -34,9 +34,11 @@ private:
 	Matrix4x4* transformationMatrixDataSphere;
 
 	Transform transformSphere;
+	Matrix4x4 worldMatrixSphere;
 
 	uint32_t latIndex = 16;
 	uint32_t lonIndex = 16;
 	const uint32_t kSubdivision = 16;
+
 	int32_t startIndex = (latIndex * kSubdivision + lonIndex) * 6;
 };
