@@ -10,9 +10,9 @@ void Sphere::Initialize(DirectXCommon* dir_, Mesh* mesh_){
 }
 
 void Sphere::Update(WinApp* winapp_, const Matrix4x4& transformationMatrixData){
-	Matrix4x4 worldMatrixSphere = MakeAffineMatrix(transformSphere.scale, transformSphere.rotate, transformSphere.translate);
+	/*Matrix4x4 worldMatrixSphere = MakeAffineMatrix(transformSphere.scale, transformSphere.rotate, transformSphere.translate);
 	worldMatrixSphere = Multiply(worldMatrixSphere, transformationMatrixData);
-	*transformationMatrixDataSphere = worldMatrixSphere;
+	*transformationMatrixDataSphere = worldMatrixSphere;*/
 }
 
 void Sphere::Draw(DirectXCommon* dir_, Mesh* mesh_){
@@ -32,27 +32,27 @@ void Sphere::Release() {
 void Sphere::CreateVertexResourceSphere(DirectXCommon* dir_, Mesh* mesh_){
 
 	// Sprite用の頂点リソースを作る
-	vertexResourceSphere = mesh_->CreateBufferResource(dir_->GetDevice(), sizeof(VertexData) * 6);
+	vertexResourceSphere = mesh_->CreateBufferResource(dir_->GetDevice(), sizeof(VertexData) * startIndex);
 
 	// リソースの先頭のアドレスから使う
 	vertexBufferViewSphere.BufferLocation = vertexResourceSphere->GetGPUVirtualAddress();
 	// 使用するリソースのサイズは頂点6つ分のサイズ
-	vertexBufferViewSphere.SizeInBytes = sizeof(VertexData) * 6;
+	vertexBufferViewSphere.SizeInBytes = sizeof(VertexData) * startIndex;
 	// 1頂点あたりのサイズ
 	vertexBufferViewSphere.StrideInBytes = sizeof(VertexData);
 
 	vertexResourceSphere->Map(0, nullptr, reinterpret_cast<void**>(&vertexDataSphere));
 
-	// 経度1つ分の角度
+	//経度分割1つ分の角度
 	const float kLonEvery = 2.0f * float(M_PI) / float(kSubdivision);
-	// 緯度1つ分の角度
+	//緯度分割1つ分の角度
 	const float kLatEvery = float(M_PI) / float(kSubdivision);
 	// 緯度の方向に分割
 	for (uint32_t latIndex = 0; latIndex < kSubdivision; ++latIndex) {
-		float lat = float(-M_PI) / 2.0f + kLatEvery * latIndex; // 0
-		// 経度の方向に分割しながら線を書く
+		float lat = float(-M_PI) / 2.0f + kLatEvery * latIndex;
+		// 経度の方向に分割しながら線を描く
 		for (uint32_t lonIndex = 0; lonIndex < kSubdivision; ++lonIndex) {
-			int32_t start = (latIndex * kSubdivision + lonIndex) * 6;
+			uint32_t start = (latIndex * kSubdivision + lonIndex) * 6;
 			float lon = lonIndex * kLonEvery;
 			float u = float(lonIndex) / float(kSubdivision);
 			float v = 1.0f - float(latIndex) / float(kSubdivision);
@@ -75,7 +75,9 @@ void Sphere::CreateVertexResourceSphere(DirectXCommon* dir_, Mesh* mesh_){
 			vertexDataSphere[start + 2].position.y = sin(lat);
 			vertexDataSphere[start + 2].position.z = cos(lat) * sin(lon + kLonEvery);
 			vertexDataSphere[start + 2].position.w = 1.0f;
-			vertexDataSphere[start + 2].texcoord = { u + (1.0f / kSubdivision),v + (1.0f / kSubdivision) };
+			vertexDataSphere[start + 2].texcoord = { u + (1.0f / kSubdivision),v - (1.0f / kSubdivision) };
+
+
 			// 基準点b
 			vertexDataSphere[start + 3].position.x = cos(lat + kLatEvery) * cos(lon);
 			vertexDataSphere[start + 3].position.y = sin(lat + kLatEvery);

@@ -35,8 +35,6 @@ private:
 
 	Transform transformSphere;
 
-	float M_PI;
-
 	uint32_t latIndex = 16;
 	uint32_t lonIndex = 16;
 	const uint32_t kSubdivision = 16;
