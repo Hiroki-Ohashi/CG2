@@ -14,7 +14,7 @@ void Sphere::Initialize(DirectXCommon* dir_, Mesh* mesh_){
 	transformSphere = { {0.5f,0.5f,0.5f},{0.0f,0.0f,0.0f},{1.0f,0.0f,0.0f} };
 
 	directionalLightData->color = { 1.0f, 1.0f, 1.0f, 1.0f };
-	directionalLightData->direction = { 0.0f, -1.0f, 0.0f };
+	directionalLightData->direction = { 0.0f, -1.0f, 1.0f };
 	directionalLightData->intensity = 1.0f;
 }
 
