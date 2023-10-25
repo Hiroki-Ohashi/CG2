@@ -46,5 +46,4 @@ private:
 	uint32_t* indexDataSprite;
 
 	Transform transformSprite;
-	Transform uvTransformSprite;
 };
