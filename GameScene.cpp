@@ -94,7 +94,10 @@ void GameScene::Draw(){
 	Matrix4x4 rotateMatrix = MakeRotateAxisAngle(axis, angle);
 
 	ImGui::Begin("rotateMatrix");
-	ImGui::DragFloat("Matrix[0][0]",rotateMatrix.m[0]);
+	ImGui::DragFloat4("Matrix[0]", rotateMatrix.m[0],0.01f,10.0f,10.0f);
+	ImGui::DragFloat4("Matrix[1]", rotateMatrix.m[1], 0.01f, 10.0f, 10.0f);
+	ImGui::DragFloat4("Matrix[2]", rotateMatrix.m[2], 0.01f, 10.0f, 10.0f);
+	ImGui::DragFloat4("Matrix[3]", rotateMatrix.m[3], 0.01f, 10.0f, 10.0f);
 	ImGui::End();
 
 	imgui->Draw();
