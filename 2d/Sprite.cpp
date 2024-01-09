@@ -45,14 +45,14 @@ void Sprite::Draw(uint32_t index){
 	// 描画(DrawCall/ドローコール)
 	dir_->GetCommandList()->DrawIndexedInstanced(6, 1, 0, 0, 0);
 	
-	if (ImGui::TreeNode("Sprite")) {
+	/*if (ImGui::TreeNode("Sprite")) {
 		ImGui::DragFloat2("Transform", &transformSprite.translate.x, 0.1f, -1000.0f, 1000.0f);
 
 		ImGui::DragFloat2("UVTransform", &uvTransformSprite.translate.x, 0.01f, -10.0f, 10.0f);
 		ImGui::DragFloat2("UVScale", &uvTransformSprite.scale.x, 0.01f, -10.0f, 10.0f);
 		ImGui::SliderAngle("UVRotate", &uvTransformSprite.rotate.z);
 		ImGui::TreePop();
-	}
+	}*/
 }
 
 void Sprite::Release(){
@@ -72,7 +72,7 @@ void Sprite::CreateVertexResourceSprite(){
 	vertexResourceSprite->Map(0, nullptr, reinterpret_cast<void**>(&vertexDataSprite));
 
 	// 三角形
-	vertexDataSprite[0].position = { 0.0f, 360.0f, 0.0f, 1.0f }; // 左下
+	vertexDataSprite[0].position = { 0.0f, 720.0f, 0.0f, 1.0f }; // 左下
 	vertexDataSprite[0].texcoord = { 0.0f, 1.0f };
 	vertexDataSprite[0].normal = { 0.0f, 0.0f, -1.0f };
 
@@ -80,11 +80,11 @@ void Sprite::CreateVertexResourceSprite(){
 	vertexDataSprite[1].texcoord = { 0.0f, 0.0f };
 	vertexDataSprite[1].normal = { 0.0f, 0.0f, -1.0f };
 
-	vertexDataSprite[2].position = { 640.0f, 360.0f, 0.0f, 1.0f }; // 右下
+	vertexDataSprite[2].position = { 1280.0f, 720.0f, 0.0f, 1.0f }; // 右下
 	vertexDataSprite[2].texcoord = { 1.0f, 1.0f };
 	vertexDataSprite[2].normal = { 0.0f, 0.0f, -1.0f };
 
-	vertexDataSprite[3].position = { 640.0f, 0.0f, 0.0f, 1.0f }; // 右上
+	vertexDataSprite[3].position = { 1280.0f, 0.0f, 0.0f, 1.0f }; // 右上
 	vertexDataSprite[3].texcoord = { 1.0f, 0.0f };
 	vertexDataSprite[3].normal = { 0.0f, 0.0f, -1.0f };
 

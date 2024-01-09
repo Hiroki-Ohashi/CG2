@@ -17,7 +17,7 @@
 
 class Model {
 public:
-	void Initialize();
+	void Initialize(ModelData Data, Transform transform);
 
 	void Update();
 
@@ -29,19 +29,13 @@ public:
 	void CreateMaterialResource();
 	void CreateWVPResource();
 
-	//void CreatePso();
-
 	Microsoft::WRL::ComPtr<ID3D12Resource> CreateBufferResource(Microsoft::WRL::ComPtr<ID3D12Device> device, size_t sizeInbytes);
 
-
-	ModelData LoadObjFile(const std::string& directoryPath, const std::string& filename);
-	MaterialData LoadMaterialTemplateFile(const std::string& directoryPath, const std::string& filename);
-
+	WorldTransform worldTransform_;
 private:
 
 	WinApp* winapp_ = WinApp::GetInsTance();
 	TextureManager* texture_ = TextureManager::GetInstance();
-	WorldTransform worldTransform_;
 
 	ModelData modelData;
 
@@ -55,7 +49,6 @@ private:
 	Material* materialData;
 	TransformationMatrix* wvpData;
 
-	Transform transform;
 	Transform uvTransform;
 
 	bool isModel;

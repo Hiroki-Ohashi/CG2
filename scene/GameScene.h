@@ -5,17 +5,16 @@
 #include <format>
 
 #include "Function.h"
-#include "Triangle.h"
-#include "Sprite.h"
 #include "ImGuiManeger.h"
 #include "MathFunction.h"
 #include "Camera.h"
-#include "Sphere.h"
-#include "Model.h"
 #include "TextureManager.h"
 #include "Input.h"
 #include "imgui.h"
-#include "Particle.h"
+
+#include "Player.h"
+#include "Enemy.h"
+#include "Sprite.h"
 
 #pragma comment(lib, "d3d12.lib")
 #pragma comment(lib, "dxgi.lib")
@@ -43,15 +42,19 @@ private:
 
 	Input* input_ = nullptr;
 	TextureManager* textureManager_ = nullptr;
-	Triangle* triangle_[Max];
-	Sprite* sprite_ = nullptr;
-	Sphere* sphere_ = nullptr;
-	Model* model_ = nullptr;
 	Camera* camera_ = nullptr;
-	Particle* particle_ = nullptr;
 
-	uint32_t monsterBall;
+	Sprite* title = nullptr;
+
+	Player* player_ = nullptr;
+	Enemy* enemy1_ = nullptr;
+	Enemy* enemy2_ = nullptr;
+	Enemy* enemy3_ = nullptr;
+
+	uint32_t a;
 	uint32_t moon;
 	uint32_t uv;
-	uint32_t kusa;
+	uint32_t mato;
+
+	bool isTitle;
 };

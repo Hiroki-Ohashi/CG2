@@ -5,6 +5,7 @@
 #include "GameScene.h"
 #include "ImGuiManeger.h"
 #include "imgui.h"
+#include "Mesh.h"
 
 
 class GameManager {

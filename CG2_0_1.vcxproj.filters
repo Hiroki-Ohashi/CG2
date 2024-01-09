@@ -37,6 +37,12 @@
     <Filter Include="Manager">
       <UniqueIdentifier>{14f74469-6f9a-4742-9d74-771f3d0653a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="particle">
+      <UniqueIdentifier>{0cd9a1dc-f7f2-4ab9-82d7-4ff8cc9f421f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="object">
+      <UniqueIdentifier>{672b0918-6c00-49b7-b6f2-283c8122ef4e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -111,8 +117,20 @@
     <ClCompile Include="utillity\WorldTransform.cpp">
       <Filter>utility</Filter>
     </ClCompile>
-    <ClCompile Include="3d\Particle.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="particle\Particle.cpp">
+      <Filter>particle</Filter>
+    </ClCompile>
+    <ClCompile Include="object\Player.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="object\PlayerBullet.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="object\Enemy.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\TitleScene.cpp">
+      <Filter>scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -188,8 +206,20 @@
     <ClInclude Include="utillity\WorldTransform.h">
       <Filter>utility</Filter>
     </ClInclude>
-    <ClInclude Include="3d\Particle.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="particle\Particle.h">
+      <Filter>particle</Filter>
+    </ClInclude>
+    <ClInclude Include="object\Player.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="object\PlayerBullet.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="object\Enemy.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\TitleScene.h">
+      <Filter>scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -199,12 +229,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\Shaders\Object3d.hlsli" />
-    <None Include="Particle.hlsli" />
+    <None Include="Resources\Shaders\Particle.hlsli" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="resources\Shaders\Object3d.PS.hlsl" />
     <FxCompile Include="resources\Shaders\Object3d.VS.hlsl" />
-    <FxCompile Include="Particle.VS.hlsl" />
-    <FxCompile Include="Particle.PS.hlsl" />
+    <FxCompile Include="Resources\Shaders\Particle.VS.hlsl" />
+    <FxCompile Include="Resources\Shaders\Particle.PS.hlsl" />
   </ItemGroup>
 </Project>

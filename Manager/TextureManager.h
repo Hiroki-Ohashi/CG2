@@ -4,9 +4,12 @@
 #include <string>
 #include <format>
 #include <cassert>
+#include <fstream>
+#include <sstream>
 #include <vector>
 
 #include "Function.h"
+#include "MathFunction.h"
 #include "DirectXCommon.h"
 #include "d3dx12.h"
 
@@ -33,6 +36,9 @@ public:
 
 	[[nodiscard]]
 	Microsoft::WRL::ComPtr<ID3D12Resource> UploadTextureData(ID3D12Resource* texture, const DirectX::ScratchImage& mipImages);
+
+	ModelData LoadObjFile(const std::string& directoryPath, const std::string& filename);
+	MaterialData LoadMaterialTemplateFile(const std::string& directoryPath, const std::string& filename);
 
 private:
 	DirectXCommon* dir_ = DirectXCommon::GetInsTance();

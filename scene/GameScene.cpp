@@ -1,78 +1,70 @@
 #include "GameScene.h"
 
 GameScene::~GameScene(){
-	for (int i = 0; i < Max; i++) {
-		delete triangle_[i];
-	}
-	delete sprite_;
-	delete sphere_;
-	delete model_;
-	delete camera_;
-	delete particle_;
+	delete player_;
+	delete enemy1_;
+	delete enemy2_;
+	delete enemy3_;
 }
 
 void GameScene::Initialize(){
 	textureManager_ = TextureManager::GetInstance();
 	textureManager_->Initialize();
 
+	input_ = Input::GetInsTance();
+	input_->Initialize();
+
 	camera_ = new Camera();
 	camera_->Initialize();
 
-	sprite_ = new Sprite(); 
-	sprite_->Initialize();
+	title = new Sprite();
+	title->Initialize();
 
-	sphere_ = new Sphere();
-	sphere_->Initialize();
+	player_ = new Player();
+	player_->Init();
 
-	model_ = new Model();
-	model_->Initialize();
+	enemy1_ = new Enemy();
+	enemy1_->Init(0.0f);
 
-	particle_ = new Particle();
-	particle_->Initialize();
+	enemy2_ = new Enemy();
+	enemy2_->Init(2.0f);
 
-	Vector4 pos[Max][3];
+	enemy3_ = new Enemy();
+	enemy3_->Init(-2.0f);
 
-	// 左下
-	pos[0][0] = { -0.5f, -0.25f, 0.0f, 1.0f };
-	// 上
-	pos[0][1] = { 0.0f, 0.5f, 0.0f, 1.0f };
-	// 右下
-	pos[0][2] = { 0.5f, -0.25f, 0.0f, 1.0f };
+	uv = textureManager_->Load("Resources/aa.png");
+	a = textureManager_->Load("Resources/a.png");
+	mato = textureManager_->Load("Resources/mato.png");
 
-	// 左下2
-	pos[1][0] = { -0.5f, -0.25f, 0.5f, 1.0f };
-	// 上2
-	pos[1][1] = { 0.0f, 0.0f, 0.0f, 1.0f };
-	// 右下2
-	pos[1][2] = { 0.5f, -0.25f, -0.5f, 1.0f };
-
-	for (int i = 0; i < Max; i++) {
-		triangle_[i] = new Triangle();
-		triangle_[i]->Initialize(pos[i]);
-	}
-
-	uv = textureManager_->Load("Resources/uvChecker.png");
-	//moon = textureManager_->Load("Resources/moon.png");
-	monsterBall = textureManager_->Load("Resources/monsterBall.png");
-	//kusa = textureManager_->Load("Resources/kusa.png");
+	isTitle = true;
 }
 
 void GameScene::Update(){
+	input_->Update();
 	camera_->Update();
+	player_->Update();
+	enemy1_->Update();
+	enemy2_->Update();
+	enemy3_->Update();
+
 }
 
 void GameScene::Draw(){
 
-	particle_->Draw(camera_, uv);
+	if (isTitle) {
+		title->Draw(uv);
+	}
 
-	//sphere_->Draw(camera_, moon);
+	if (input_->PushKey(DIK_SPACE)) {
+		isTitle = false;
+	}
 
-	//model_->Draw(camera_, uv);
+	player_->Draw(camera_, a);
 
-	/*triangle_[0]->Draw(camera_, uv);
-	triangle_[1]->Draw(camera_, uv);*/
-
-	/*sprite_->Draw(monsterBall);*/
+	enemy1_->Draw(camera_, mato);
+	enemy2_->Draw(camera_, mato);
+	enemy3_->Draw(camera_, mato);
+	
 }
 
 void GameScene::Release() {

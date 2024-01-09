@@ -3,7 +3,7 @@
 GameManager::GameManager()
 {
 	winapp = WinApp::GetInsTance();
-	winapp->Initialize(L"CG2");
+	winapp->Initialize(L"LE2B_04_オオハシ_ヒロキ");
 
 	directX = DirectXCommon::GetInsTance();
 	directX->Initialize();
@@ -16,6 +16,7 @@ GameManager::GameManager()
 
 	imgui =ImGuiManeger::GetInstance();
 	imgui->Initialize();
+
 }
 
 GameManager::~GameManager()
