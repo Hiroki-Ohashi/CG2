@@ -101,7 +101,6 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="particle\Particle.cpp" />
     <ClCompile Include="object\Player.cpp" />
     <ClCompile Include="object\PlayerBullet.cpp" />
-    <ClCompile Include="scene\TitleScene.cpp" />
     <ClCompile Include="utillity\Camera.cpp" />
     <ClCompile Include="base\DirectXCommon.cpp" />
     <ClCompile Include="externals\imgui\imgui.cpp" />
@@ -131,7 +130,6 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="object\Enemy.h" />
     <ClInclude Include="object\Player.h" />
     <ClInclude Include="object\PlayerBullet.h" />
-    <ClInclude Include="scene\TitleScene.h" />
     <ClInclude Include="utillity\Camera.h" />
     <ClInclude Include="base\DirectXCommon.h" />
     <ClInclude Include="externals\imgui\imconfig.h" />

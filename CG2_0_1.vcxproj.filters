@@ -129,9 +129,6 @@
     <ClCompile Include="object\Enemy.cpp">
       <Filter>object</Filter>
     </ClCompile>
-    <ClCompile Include="scene\TitleScene.cpp">
-      <Filter>scene</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="externals\imgui\imconfig.h">
@@ -217,9 +214,6 @@
     </ClInclude>
     <ClInclude Include="object\Enemy.h">
       <Filter>object</Filter>
-    </ClInclude>
-    <ClInclude Include="scene\TitleScene.h">
-      <Filter>scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
