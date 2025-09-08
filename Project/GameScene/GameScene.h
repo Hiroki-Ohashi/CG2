@@ -155,7 +155,7 @@ private:
 	const float plusNoiseStrength = 1.0f;
 
 	// ゴールライン
-	float goalline = 98000.0f;
+	float goalline = 97900.0f;
 	bool isGoal_;
 
 	// デバッグ用仮変数;
