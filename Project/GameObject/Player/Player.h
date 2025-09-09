@@ -40,7 +40,6 @@ public:
 	// Getter
 	Vector3 GetPos() const { return worldtransform_.translate; }
 	Vector3 GetReticlePos() { return positionReticle; }
-	Vector3 Get3DWorldPosition();
 	Vector3 GetVelocity() { return velocity_; }
 	int32_t GetHP() { return HP; }
 	bool GetIsHit() { return isHit_; }

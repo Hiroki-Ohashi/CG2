@@ -302,7 +302,7 @@ void Player::Move()
 void Player::Convert2D(Camera* camera_)
 {
 	// 3Dレティクルのワールド座標から2Dレティクルのスクリーン座標を計算
-	positionReticle = Get3DWorldPosition();
+	positionReticle = GetWorldPosition();
 
 	// ビューポート行列
 	Matrix4x4 matViewport = MakeViewportMatrix(0, 0, (float)WinApp::GetKClientWidth(), (float)WinApp::GetKClientHeight(), 0, 1);

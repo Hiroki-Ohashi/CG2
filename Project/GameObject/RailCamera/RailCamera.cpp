@@ -105,7 +105,7 @@ void RailCamera::AfterStartCamera()
 	camera_.SetFovY(fov);
 
 	// カメラをレティクルに向ける
-	RotObject(player_->Get3DWorldPosition(), camera_.cameraTransform.translate, camera_.cameraTransform.rotate);
+	RotObject(player_->GetWorldPosition(), camera_.cameraTransform.translate, camera_.cameraTransform.rotate);
 }
 
 void RailCamera::ClearCamera()
@@ -113,7 +113,7 @@ void RailCamera::ClearCamera()
 	camera_.cameraTransform.translate = { player_->GetPos().x, player_->GetPos().y + cameraOffset.y,  98000.0f - cameraOffset.z };
 
 	// カメラをプレイヤーに向ける
-	RotObject(player_->Get3DWorldPosition(), camera_.cameraTransform.translate, camera_.cameraTransform.rotate);
+	RotObject(player_->GetWorldPosition(), camera_.cameraTransform.translate, camera_.cameraTransform.rotate);
 }
 
 void RailCamera::ClearCameraMove()
